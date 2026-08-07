@@ -1,0 +1,132 @@
+# Fixture config for the exporter's own coverage. One source tree, five export entries - each
+# pins down a setting that is mutually exclusive with the others, so the same fixtures have to
+# come out correct five different ways. Asserted by tests/plugin_exporter/export_fixture_test.gd.
+#
+# Per-entry settings are written as untyped keys directly under parser_overide_settings, and the
+# empty "parse_*" blocks are deliberately absent. That is the shape that used to leak: an entry
+# omitting a block was handed the shared global settings dictionary by reference, and the untyped
+# key distribution then wrote through it into every later entry. Spelling the blocks out would
+# dodge that, so this config does not - if the isolation regresses, variant 3's relative paths and
+# variant 5's backport bleed into the variants after them and the suite fails.
+#
+# The exclude blocks are repeated verbatim rather than shared: the YAML parser here has no
+# anchor/alias support.
+export_root: "res://addons/plugin_exporter_test/export_ignore/exports"
+plugin_folder: "PluginExporterTest{{version=plugin_exporter_test}}"
+pre_script: "res://addons/plugin_exporter_test/export_ignore/pre_post_export.gd"
+post_script: "res://addons/plugin_exporter_test/export_ignore/pre_post_export.gd"
+options:
+  overwrite: true
+  include_uid: true
+  include_import: true
+  ignore_src: true
+  use_tag_in_cfg: false
+  exported_deps: []
+  include_min_version: true
+  move_global_files: true
+  parser_settings:
+    use_relative_paths: false
+    backport_target: 100
+    parse_cs:
+      namespace_rename:
+        PluginExporterTest.Fixture: PETExported.Fixture
+    parse_gd:
+      replace_editor_interface: false
+      class_rename_ignore:
+        - "PETKeptGlobal"
+      backport_string_renames: {}
+    parse_tscn: {}
+    parse_tres: {}
+exports:
+  # 1. Baseline - absolute paths, no reduction, no backport. Everything else is measured against
+  # this one, and it is the only entry carrying the other_transfers.
+  -
+    source: "res://addons/plugin_exporter_test"
+    export_folder: "plugin-exporter-test{{version=plugin_exporter_test}}/plugin_exporter_test"
+    exclude:
+      directories:
+        - "res://addons/plugin_exporter_test/export_ignore"
+        - "res://addons/plugin_exporter_test/src/excluded"
+      file_extensions:
+        - "tmp"
+      files:
+        - "res://addons/plugin_exporter_test/src/notes_excluded.md"
+    other_transfers:
+      - to: "docs/note.txt"
+        from: "res://addons/plugin_exporter_test/export_ignore/transfer/note.txt"
+      - to: "docs/bundle"
+        from: "res://addons/plugin_exporter_test/export_ignore/transfer/bundle"
+    parser_overide_settings: {}
+    remote_dir: "res://addons/plugin_exporter_test/src/remote"
+
+  # 2. Access-path reduction: dotted chains become direct preloads, and hubs nothing walks through
+  # any more get dropped along with the tree they preloaded.
+  -
+    source: "res://addons/plugin_exporter_test"
+    export_folder: "pet-reduced{{version=plugin_exporter_test}}/plugin_exporter_test"
+    exclude:
+      directories:
+        - "res://addons/plugin_exporter_test/export_ignore"
+        - "res://addons/plugin_exporter_test/src/excluded"
+      file_extensions:
+        - "tmp"
+      files:
+        - "res://addons/plugin_exporter_test/src/notes_excluded.md"
+    other_transfers: []
+    parser_overide_settings:
+      reduce_access_paths: true
+    remote_dir: "res://addons/plugin_exporter_test/src/remote"
+
+  # 3. Relative paths - every rewritten reference comes out "./" or "../" instead of "res://".
+  -
+    source: "res://addons/plugin_exporter_test"
+    export_folder: "pet-relative{{version=plugin_exporter_test}}/plugin_exporter_test"
+    exclude:
+      directories:
+        - "res://addons/plugin_exporter_test/export_ignore"
+        - "res://addons/plugin_exporter_test/src/excluded"
+      file_extensions:
+        - "tmp"
+      files:
+        - "res://addons/plugin_exporter_test/src/notes_excluded.md"
+    other_transfers: []
+    parser_overide_settings:
+      use_relative_paths: true
+    remote_dir: "res://addons/plugin_exporter_test/src/remote"
+
+  # 4. Renamed plugin. The folder basename differing from the source directory name is the only
+  # thing that turns rename_plugin on - nothing else in the repo does, so every path it touches is
+  # otherwise untested. Settings-wise identical to the baseline, which is also what makes it the
+  # canary for variant 3 leaking forward.
+  -
+    source: "res://addons/plugin_exporter_test"
+    export_folder: "pet-renamed{{version=plugin_exporter_test}}/pet_renamed_plugin"
+    exclude:
+      directories:
+        - "res://addons/plugin_exporter_test/export_ignore"
+        - "res://addons/plugin_exporter_test/src/excluded"
+      file_extensions:
+        - "tmp"
+      files:
+        - "res://addons/plugin_exporter_test/src/notes_excluded.md"
+    other_transfers: []
+    parser_overide_settings: {}
+    remote_dir: "res://addons/plugin_exporter_test/src/remote"
+
+  # 5. Backport, kept deliberately thin: "@abstract" stripping and the EditorInterface rewrite.
+  -
+    source: "res://addons/plugin_exporter_test"
+    export_folder: "pet-backport{{version=plugin_exporter_test}}/plugin_exporter_test"
+    exclude:
+      directories:
+        - "res://addons/plugin_exporter_test/export_ignore"
+        - "res://addons/plugin_exporter_test/src/excluded"
+      file_extensions:
+        - "tmp"
+      files:
+        - "res://addons/plugin_exporter_test/src/notes_excluded.md"
+    other_transfers: []
+    parser_overide_settings:
+      backport_target: 3
+      replace_editor_interface: true
+    remote_dir: "res://addons/plugin_exporter_test/src/remote"

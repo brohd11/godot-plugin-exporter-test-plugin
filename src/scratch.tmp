@@ -1,0 +1,2 @@
+PET_EXCLUDED_EXTENSION
+Excluded by "exclude.file_extensions: [tmp]". Must never appear in an export.

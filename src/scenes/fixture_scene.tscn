@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://addons/plugin_exporter_test/src/scenes/scene_root.gd" id="1_root"]
+[ext_resource type="Resource" path="res://addons/plugin_exporter_test/src/scenes/fixture_resource.tres" id="2_res"]
+[ext_resource type="PackedScene" uid="uid://5na0im11uy1e" path="res://addons/addon_lib/brohd/dock_manager/dock_popup/dock_popup.tscn" id="3_popup"]
+
+[node name="PETSceneRoot" type="Control"]
+script = ExtResource("1_root")
+fixture_resource = ExtResource("2_res")
+popup_scene = ExtResource("3_popup")

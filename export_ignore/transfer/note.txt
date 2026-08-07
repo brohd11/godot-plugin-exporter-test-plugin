@@ -1,0 +1,4 @@
+PET_TRANSFER_SINGLE
+
+Pulled in by "other_transfers" as a single file. It lives under export_ignore/ so the ordinary
+source scan cannot pick it up - if it lands in the export, the transfer did it.

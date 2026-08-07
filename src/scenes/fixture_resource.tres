@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PETResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/plugin_exporter_test/src/scenes/pet_resource.gd" id="1_petres"]
+
+[resource]
+script = ExtResource("1_petres")
+label = "fixture-resource"
+weight = 7
