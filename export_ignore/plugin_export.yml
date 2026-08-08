@@ -24,6 +24,7 @@ options:
   exported_deps: []
   include_min_version: true
   move_global_files: true
+  include_docs: true
   parser_settings:
     use_relative_paths: false
     backport_target: 100
