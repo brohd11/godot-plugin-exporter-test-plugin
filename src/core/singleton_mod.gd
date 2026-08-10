@@ -1,9 +1,7 @@
 class_name PETSingletonMod #! singleton-module 0.2.0
-extends SingletonRefCount
+extends "res://addons/addon_lib/brohd/singleton/singleton_ref_count.gd" #! ext Singletons.RefCount
 ## A singleton module: a plugin other plugins may reference. The exporter reads the tag above for
 ## the version and writes a "singleton_modules" entry into the export's ".export_data" file.
-
-const SingletonRefCount = Singletons.RefCount
 
 const PE_STRIP_CAST_SCRIPT = preload("res://addons/plugin_exporter_test/src/core/singleton_mod.gd")
 
