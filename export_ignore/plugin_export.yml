@@ -25,6 +25,7 @@ options:
   include_min_version: true
   move_global_files: true
   include_docs: true
+  include_project_license: false
   parser_settings:
     use_relative_paths: false
     backport_target: 100
