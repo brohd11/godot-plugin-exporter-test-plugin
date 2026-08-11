@@ -6,7 +6,8 @@
 ## Targets are deliberately small leaf scripts - every export variant crawls this file, so
 ## anything with a wide preload tree gets copied five times over.
 
-const UList = preload("res://addons/addon_lib/brohd/alib_runtime/utils/u_list.gd")
+## The doubled slash is intentional: exports must canonicalize it before remapping the preload.
+const UList = preload("res://addons/addon_lib/brohd//alib_runtime/utils/u_list.gd")
 const UObject = preload("res://addons/addon_lib/brohd/alib_runtime/utils/u_object.gd")
 const USort = preload("res://addons/addon_lib/brohd/alib_runtime/utils/u_sort.gd")
 

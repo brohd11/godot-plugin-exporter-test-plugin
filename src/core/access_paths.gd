@@ -10,6 +10,9 @@ extends RefCounted
 ## declaration has to become the preload itself.
 const UList = ALibRuntime.Utils.UList
 
+## A matching direct preload must satisfy reduction instead of being injected a second time.
+const UObject = preload("res://addons/addon_lib/brohd/alib_runtime/utils/u_object.gd")
+
 ## Singletons is used bare below, so unlike ALibRuntime it must NOT be pruned even though this
 ## chain reduces.
 const SingletonBase = Singletons.Base
@@ -24,6 +27,10 @@ static func token_pattern() -> String:
 	## Head is already the deepest file it names, so reduction must leave this alone rather than
 	## rewrite it to itself. Tokenizer also stays a genuine use of the class.
 	return Tokenizer.pattern
+
+
+static func object_script() -> GDScript:
+	return ALibRuntime.Utils.UObject
 
 
 static func hub_script() -> GDScript:
