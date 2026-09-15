@@ -44,7 +44,8 @@ exports:
   # this one, and it is the only entry carrying the other_transfers.
   -
     source: "res://addons/plugin_exporter_test"
-    export_folder: "plugin-exporter-test{{version=plugin_exporter_test}}/plugin_exporter_test"
+    export_name: "plugin-exporter-test{{version=plugin_exporter_test}}"
+    export_folder: "addons/plugin_exporter_test"
     exclude:
       directories:
         - "res://addons/plugin_exporter_test/export_ignore"
@@ -65,7 +66,8 @@ exports:
   # any more get dropped along with the tree they preloaded.
   -
     source: "res://addons/plugin_exporter_test"
-    export_folder: "pet-reduced{{version=plugin_exporter_test}}/plugin_exporter_test"
+    export_name: "pet-reduced{{version=plugin_exporter_test}}"
+    export_folder: "addons/plugin_exporter_test"
     exclude:
       directories:
         - "res://addons/plugin_exporter_test/export_ignore"
@@ -82,7 +84,8 @@ exports:
   # 3. Relative paths - every rewritten reference comes out "./" or "../" instead of "res://".
   -
     source: "res://addons/plugin_exporter_test"
-    export_folder: "pet-relative{{version=plugin_exporter_test}}/plugin_exporter_test"
+    export_name: "pet-relative{{version=plugin_exporter_test}}"
+    export_folder: "addons/plugin_exporter_test"
     exclude:
       directories:
         - "res://addons/plugin_exporter_test/export_ignore"
@@ -96,13 +99,14 @@ exports:
       use_relative_paths: true
     remote_dir: "res://addons/plugin_exporter_test/src/remote"
 
-  # 4. Renamed plugin. The folder basename differing from the source directory name is the only
+  # 4. Renamed plugin. export_folder (the install path) differing from the source path is the only
   # thing that turns rename_plugin on - nothing else in the repo does, so every path it touches is
   # otherwise untested. Settings-wise identical to the baseline, which is also what makes it the
   # canary for variant 3 leaking forward.
   -
     source: "res://addons/plugin_exporter_test"
-    export_folder: "pet-renamed{{version=plugin_exporter_test}}/pet_renamed_plugin"
+    export_name: "pet-renamed{{version=plugin_exporter_test}}"
+    export_folder: "addons/pet_renamed_plugin"
     exclude:
       directories:
         - "res://addons/plugin_exporter_test/export_ignore"
@@ -118,7 +122,8 @@ exports:
   # 5. Backport, kept deliberately thin: "@abstract" stripping and the EditorInterface rewrite.
   -
     source: "res://addons/plugin_exporter_test"
-    export_folder: "pet-backport{{version=plugin_exporter_test}}/plugin_exporter_test"
+    export_name: "pet-backport{{version=plugin_exporter_test}}"
+    export_folder: "addons/plugin_exporter_test"
     exclude:
       directories:
         - "res://addons/plugin_exporter_test/export_ignore"
