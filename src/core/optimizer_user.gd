@@ -49,3 +49,13 @@ static func substitution_check() -> int:
 
 static func nested_check(value:float) -> float:
 	return Helpers.chained(Helpers.affine(value))
+
+static func early_check() -> Array:
+	var events:Array = []
+	var total:int = 0
+	for value:int in range(-1, 2):
+		var result := Helpers.early_value(value)
+		total += result
+		Helpers.early_effect(events, value)
+		events.append("after")
+	return [total, events]

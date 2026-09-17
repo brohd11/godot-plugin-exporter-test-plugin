@@ -32,3 +32,18 @@ static func all_values(...values:Array) -> bool:
 #! inline
 static func chained(value:float) -> float:
 	return affine(affine(value))
+
+#! inline
+static func early_value(value:int) -> int:
+	if value < 0:
+		return -1
+	if value == 0:
+		return 2
+	return value + 3
+
+#! inline
+static func early_effect(events:Array, value:int) -> void:
+	if value < 0:
+		events.append("early")
+		return
+	events.append(value)

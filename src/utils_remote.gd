@@ -1,10 +1,5 @@
-#! remote
-## The preload-hub form: a single file collecting every out-of-plugin script the plugin uses, so
-## the rest of the source only ever preloads this one path. On export each target is copied into
-## remote_dir and these paths are rewritten to point at the copies.
-##
-## Targets are deliberately small leaf scripts - every export variant crawls this file, so
-## anything with a wide preload tree gets copied five times over.
+## An untagged preload hub: its targets must be gathered and rewritten in every export variant.
+## Small targets keep the five-variant fixture export inexpensive.
 
 ## The doubled slash is intentional: exports must canonicalize it before remapping the preload.
 const UList = preload("res://addons/addon_lib/brohd//alib_runtime/utils/u_list.gd")
