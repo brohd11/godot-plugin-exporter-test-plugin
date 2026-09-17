@@ -26,3 +26,26 @@ static func reference_score() -> int:
 	var record := Record.new(Payload.new())
 	record.items.append(4)
 	return record.payload.value + record.items.size()
+
+static func path_check(path:String) -> bool:
+	if Helpers.is_gdscript_path(path):
+		return true
+	return false
+
+static func dynamic_path_check(path:Variant) -> bool:
+	return false or Helpers.is_gdscript_path(path)
+
+static var predicate_calls:int = 0
+
+static func predicate(value:bool) -> bool:
+	predicate_calls += 1
+	return value
+
+static func substitution_check() -> int:
+	predicate_calls = 0
+	if Helpers.all_values(predicate(false), predicate(true)):
+		return -1
+	return predicate_calls
+
+static func nested_check(value:float) -> float:
+	return Helpers.chained(Helpers.affine(value))

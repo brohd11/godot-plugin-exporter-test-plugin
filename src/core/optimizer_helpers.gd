@@ -17,3 +17,18 @@ static func vector_score(value:Vector2) -> float:
 #! inline
 static func struct_score(value:Vec) -> float:
 	return value.x + value.y
+
+#! inline
+static func is_gdscript_path(path:String) -> bool:
+	return path.ends_with(".gd") or path.contains(".gd.") or path.contains(".gd::")
+
+#! inline; substitute
+static func all_values(...values:Array) -> bool:
+	for value in values:
+		if not value:
+			return false
+	return true
+
+#! inline
+static func chained(value:float) -> float:
+	return affine(affine(value))
