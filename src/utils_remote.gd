@@ -17,4 +17,4 @@ const YAML_VERSION = "res://addons/addon_lib/yaml_parser/version.cfg" #! depende
 const LIB_VERSION = "res://addons/addon_lib/brohd/version.cfg" #! dependency current
 
 ## An explicit destination, which must be inside the plugin.
-const LAYOUT_DEFAULTS = "res://addons/addon_lib/brohd/dock_manager/config/layout.json" #! dependency res://addons/plugin_exporter_test/src/deps
+const LAYOUT_DEFAULTS = "res://addons/addon_lib/dock_manager/config/layout.json" #! dependency res://addons/plugin_exporter_test/src/deps
