@@ -15,7 +15,7 @@ const KeptGlobal = preload("../globals/fixture_kept.gd")
 
 ## "#! ignore-remote" opts a path out of both copying and rewriting - it must come through the
 ## export byte for byte, still pointing outside the plugin.
-const UPSTREAM_README = "res://addons/addon_lib/brohd/README.md" #! ignore-remote
+const UPSTREAM_README = "res://addons/_lib/brohd/README.md" #! ignore-remote
 
 
 static func describe() -> String:

@@ -11,7 +11,7 @@ extends RefCounted
 const UList = ALibRuntime.Utils.UList
 
 ## A matching direct preload must satisfy reduction instead of being injected a second time.
-const UObject = preload("res://addons/addon_lib/brohd/alib_runtime/utils/u_object.gd")
+const UObject = preload("res://addons/_lib/brohd/alib_runtime/utils/u_object.gd")
 
 ## Singletons is used bare below, so unlike ALibRuntime it must NOT be pruned even though this
 ## chain reduces.
