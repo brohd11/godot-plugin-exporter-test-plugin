@@ -9,7 +9,7 @@ const PLUGIN_EXPORTED = false
 const UtilsRemote = preload("res://addons/plugin_exporter_test/src/utils_remote.gd")
 ## A uid preload, which the exporter has to resolve to a path before it can rewrite it. The
 ## target is also a global class, so it doubles as the out-of-plugin global class case.
-const TokenizerRemote = preload("uid://csd1u1n0of6mj")
+const YAMLRemote = preload("uid://betvixnlx3ty5")
 ## Relative rather than res://, which get_rel_or_absolute_path has to normalise either way.
 const KeptGlobal = preload("../globals/fixture_kept.gd")
 
@@ -30,5 +30,5 @@ static func sorted_pair(a:int, b:int) -> Array:
 	return [b, a]
 
 
-static func token_count(text:String) -> int:
-	return TokenizerRemote.words_only(text).size()
+static func dump_length(data) -> int:
+	return YAMLRemote.dump(data).length()

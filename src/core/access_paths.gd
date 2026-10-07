@@ -23,10 +23,10 @@ static func next_index(size:int, current:int) -> int:
 	return ALibRuntime.Utils.UList.get_next_item(size, current)
 
 
-static func token_pattern() -> String:
+static func yaml_node_kind() -> int:
 	## Head is already the deepest file it names, so reduction must leave this alone rather than
-	## rewrite it to itself. Tokenizer also stays a genuine use of the class.
-	return Tokenizer.pattern
+	## rewrite it to itself. YAMLParser also stays a genuine use of the class.
+	return YAMLParser.NODE_DICT
 
 
 static func object_script() -> GDScript:
