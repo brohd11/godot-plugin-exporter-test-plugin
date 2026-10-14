@@ -3,8 +3,8 @@
 
 ## The doubled slash is intentional: exports must canonicalize it before remapping the preload.
 const UList = preload("res://addons/_lib/brohd//alib_runtime/utils/u_list.gd")
-const UObject = preload("res://addons/_lib/brohd/alib_runtime/utils/u_object.gd")
-const USort = preload("res://addons/_lib/brohd/alib_runtime/utils/u_sort.gd")
+const UObject = preload("res://addons/_lib/brohd/src/alib_runtime/utils/u_object.gd")
+const USort = preload("res://addons/_lib/brohd/src/alib_runtime/utils/u_sort.gd")
 
 ## Not preloadable, so these only travel if they are tagged. Three different files rather than one
 ## tagged three ways: the tags are keyed by target path, so the same file tagged twice collapses

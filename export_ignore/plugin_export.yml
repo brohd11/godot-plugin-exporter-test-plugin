@@ -13,8 +13,8 @@
 # anchor/alias support.
 export_root: "res://addons/plugin_exporter_test/export_ignore/exports"
 plugin_folder: "PluginExporterTest{{version=plugin_exporter_test}}"
-pre_script: "res://addons/plugin_exporter_test/export_ignore/pre_post_export.gd"
-post_script: "res://addons/plugin_exporter_test/export_ignore/pre_post_export.gd"
+pre_script: ""
+post_script: ""
 options:
   overwrite: true
   include_uid: true
