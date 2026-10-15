@@ -17,9 +17,9 @@ const YAML_VERSION = "res://addons/_lib/yaml_parser/version.cfg" #! dependency
 const LIB_VERSION = "res://addons/_lib/util_r/version.cfg" #! dependency current
 
 ## An explicit destination, which must be inside the plugin.
-const LAYOUT_DEFAULTS = "res://addons/plugin_exporter/export_ignore/test/fixtures/vendor/nested/layout.json" #! dependency res://addons/plugin_exporter_test/src/deps
+const LAYOUT_DEFAULTS = "res://addons/package_exporter/export_ignore/test/fixtures/vendor/nested/layout.json" #! dependency res://addons/plugin_exporter_test/src/deps
 
 ## Claims fixtures/vendor/LICENSE while the tag above claims vendor/nested/LICENSE, giving
 ## gather_licenses a nested pair to resolve. They sit outside the plugin because a license inside
 ## the exported source ships at its own path, and check_ignore hard-blocks export_ignore/.
-const VENDOR_DATA = "res://addons/plugin_exporter/export_ignore/test/fixtures/vendor/data.json" #! dependency
+const VENDOR_DATA = "res://addons/package_exporter/export_ignore/test/fixtures/vendor/data.json" #! dependency

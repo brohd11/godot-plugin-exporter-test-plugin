@@ -1,7 +1,7 @@
 # Fixture Docs
 
 The exporter copies this folder into the exported plugin as `.doc`, structure intact, without a
-dependency crawl. Asserted by `addons/plugin_exporter/export_ignore/test/export_fixture_test.gd`.
+dependency crawl. Asserted by `addons/package_exporter/export_ignore/test/export_fixture_test.gd`.
 
 Written to exercise the doc viewer's renderer as well: a **fence**, an image and a
 [link to the nested page](guide/nested.md) all appear below.

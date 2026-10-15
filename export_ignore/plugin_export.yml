@@ -1,6 +1,6 @@
 # Fixture config for the exporter's own coverage. One source tree, five export entries - each
 # pins down a setting that is mutually exclusive with the others, so the same fixtures have to
-# come out correct five different ways. Asserted by addons/plugin_exporter/export_ignore/test/export_fixture_test.gd.
+# come out correct five different ways. Asserted by addons/package_exporter/export_ignore/test/export_fixture_test.gd.
 #
 # Per-entry settings are written as untyped keys directly under parser_overide_settings, and the
 # empty "parse_*" blocks are deliberately absent. That is the shape that used to leak: an entry
