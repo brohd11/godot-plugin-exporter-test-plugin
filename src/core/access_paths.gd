@@ -6,21 +6,21 @@ extends RefCounted
 ## names a real script, and a hub every one of whose mentions got rewritten is then dropped from
 ## the export entirely.
 
-## The declaration form. The general rewrite would turn this into "const UList = UList", so the
+## The declaration form. The general rewrite would turn this into "const UWindow = UWindow", so the
 ## declaration has to become the preload itself.
-const UList = ALibRuntime.Utils.UList
+const UWindow = UtilR.Nodes.UWindow
 
 ## A matching direct preload must satisfy reduction instead of being injected a second time.
-const UObject = preload("res://addons/_lib/brohd/src/alib_runtime/utils/u_object.gd")
+const UObject = preload("res://addons/_lib/util_r/src/object/u_object.gd")
 
-## Singletons is used bare below, so unlike ALibRuntime it must NOT be pruned even though this
+## Singletons is used bare below, so unlike UtilR it must NOT be pruned even though this
 ## chain reduces.
 const SingletonBase = Singletons.Base
 
 
-static func next_index(size:int, current:int) -> int:
+static func control_position(control:Control) -> Vector2:
 	## Chain ending on a file: reduces to the bound name outright.
-	return ALibRuntime.Utils.UList.get_next_item(size, current)
+	return UtilR.Nodes.UWindow.get_control_absolute_position(control)
 
 
 static func yaml_node_kind() -> int:
@@ -30,7 +30,7 @@ static func yaml_node_kind() -> int:
 
 
 static func object_script() -> GDScript:
-	return ALibRuntime.Utils.UObject
+	return UtilR.Objects.UObject
 
 
 static func hub_script() -> GDScript:
@@ -40,4 +40,4 @@ static func hub_script() -> GDScript:
 
 
 static func base_is_node() -> bool:
-	return SingletonBase != null and UList != null
+	return SingletonBase != null and UWindow != null

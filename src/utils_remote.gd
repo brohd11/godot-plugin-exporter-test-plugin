@@ -1,11 +1,10 @@
 ## An untagged preload hub: its targets must be gathered and rewritten in every export variant.
 ## Small targets keep the five-variant fixture export inexpensive.
 
-const UList = preload("res://addons/_lib/brohd/src/alib_runtime/utils/u_list.gd")
+const UWindow = preload("res://addons/_lib/util_r/src/node/u_window.gd")
 ## The doubled slash is intentional: exports must canonicalize it before remapping the preload.
 const UControl = preload("res://addons/_lib/util_r/src//node/u_control.gd")
-const UObject = preload("res://addons/_lib/brohd/src/alib_runtime/utils/u_object.gd")
-const USort = preload("res://addons/_lib/brohd/src/alib_runtime/utils/u_sort.gd")
+const UObject = preload("res://addons/_lib/util_r/src/object/u_object.gd")
 
 ## Not preloadable, so these only travel if they are tagged. Three different files rather than one
 ## tagged three ways: the tags are keyed by target path, so the same file tagged twice collapses
@@ -15,7 +14,7 @@ const USort = preload("res://addons/_lib/brohd/src/alib_runtime/utils/u_sort.gd"
 const YAML_VERSION = "res://addons/_lib/yaml_parser/version.cfg" #! dependency
 
 ## "current" places the copy next to this file instead of in remote_dir.
-const LIB_VERSION = "res://addons/_lib/brohd/version.cfg" #! dependency current
+const LIB_VERSION = "res://addons/_lib/util_r/version.cfg" #! dependency current
 
 ## An explicit destination, which must be inside the plugin.
 const LAYOUT_DEFAULTS = "res://addons/plugin_exporter/export_ignore/test/fixtures/vendor/nested/layout.json" #! dependency res://addons/plugin_exporter_test/src/deps

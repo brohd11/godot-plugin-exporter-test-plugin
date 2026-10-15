@@ -8,4 +8,4 @@ extends RefCounted
 
 
 static func string_mode() -> int:
-	return ALibRuntime.Utils.UString.StringMap.Mode.STRING
+	return UtilR.Strings.UString.StringMap.Mode.STRING

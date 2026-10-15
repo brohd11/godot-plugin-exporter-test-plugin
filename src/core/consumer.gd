@@ -15,7 +15,7 @@ const KeptGlobal = preload("../globals/fixture_kept.gd")
 
 ## "#! ignore-remote" opts a path out of both copying and rewriting - it must come through the
 ## export byte for byte, still pointing outside the plugin.
-const UPSTREAM_README = "res://addons/_lib/brohd/README.md" #! ignore-remote
+const UPSTREAM_LICENSE = "res://addons/_lib/util_r/LICENSE" #! ignore-remote
 
 
 static func describe() -> String:
@@ -24,10 +24,8 @@ static func describe() -> String:
 	return ", ".join(parts)
 
 
-static func sorted_pair(a:int, b:int) -> Array:
-	if UtilsRemote.UList.get_next_item(2, a) == b:
-		return [a, b]
-	return [b, a]
+static func control_position(control:Control) -> Vector2:
+	return UtilsRemote.UWindow.get_control_absolute_position(control)
 
 
 static func dump_length(data) -> int:

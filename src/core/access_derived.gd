@@ -3,5 +3,5 @@ extends "res://addons/plugin_exporter_test/src/core/access_base.gd"
 ## without declaring it a second time.
 
 
-static func ranked_keys(priorities:Dictionary) -> Array:
-	return ALibRuntime.Utils.USort.sort_priority_dict(priorities).keys()
+static func unique_upper(base_name:String, taken:Array) -> String:
+	return UtilR.Strings.UName.incremental_name_check_in_array(base_name, taken).to_upper()
