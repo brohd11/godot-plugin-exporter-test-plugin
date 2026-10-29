@@ -17,6 +17,13 @@ const KeptGlobal = preload("../globals/fixture_kept.gd")
 ## export byte for byte, still pointing outside the plugin.
 const UPSTREAM_LICENSE = "res://addons/_lib/util_r/LICENSE" #! ignore-remote
 
+## A string spanning lines: the global class rename must not reach into it.
+const TEMPLATE = \
+"class Wrapper:
+	func global() -> PETFixtureGlobal:
+		return null
+"
+
 
 static func describe() -> String:
 	## PETFixtureGlobal is renamed on export; PETKeptGlobal is not.
