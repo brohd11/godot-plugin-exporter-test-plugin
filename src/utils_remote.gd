@@ -14,7 +14,7 @@ const UObject = preload("res://addons/_lib/util_r/src/object/u_object.gd")
 const YAML_VERSION = "res://addons/_lib/yaml_parser/version.cfg" #! dependency
 
 ## "current" places the copy next to this file instead of in remote_dir.
-const LIB_VERSION = "res://addons/_lib/util_r/version.cfg" #! dependency current
+const LIB_VERSION = "res://addons/_lib/util_r/package.cfg" #! dependency current
 
 ## An explicit destination, which must be inside the plugin.
 const LAYOUT_DEFAULTS = "res://addons/gdpackage/export_ignore/test/fixtures/vendor/nested/layout.json" #! dependency res://addons/plugin_exporter_test/src/deps/layout.json
