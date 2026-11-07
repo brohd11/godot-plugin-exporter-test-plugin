@@ -29,5 +29,25 @@ static func inline_tagged(value) -> void:
 		pass
 
 
+static func dict_value() -> Dictionary:
+	## Reads like an annotation, but a type is never called, so this has to survive the strip.
+	return {0:PETLocalOnly.make()}
+
+
+static func one_line_branch(value) -> void:
+	if value: PETLocalOnly.make()
+
+
+static func dotted(value) -> PETLocalOnly.Inner:
+	var inner:PETLocalOnly.Inner = value
+	return inner
+
+
 class PETLocalOnly extends RefCounted:
 	var flag := true
+
+	static func make() -> int:
+		return 1
+
+	class Inner:
+		pass
