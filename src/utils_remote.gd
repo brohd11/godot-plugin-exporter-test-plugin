@@ -11,7 +11,7 @@ const UObject = preload("res://addons/_lib/util_r/src/object/u_object.gd")
 ## to a single copy and only one placement would ever be observable.
 ##
 ## Plain "#! dependency" puts it in remote_dir alongside everything else.
-const YAML_VERSION = "res://addons/_lib/yaml_parser/version.cfg" #! dependency
+const YAML_VERSION = "res://addons/_lib/yaml_parser/package.cfg" #! dependency
 
 ## "current" places the copy next to this file instead of in remote_dir.
 const LIB_VERSION = "res://addons/_lib/util_r/package.cfg" #! dependency current

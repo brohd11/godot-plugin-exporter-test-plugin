@@ -33,6 +33,7 @@ options:
       namespace_rename:
         PluginExporterTest.Fixture: PETExported.Fixture
     parse_gd:
+      reduce_access_paths: false
       replace_editor_interface: false
       class_rename_ignore:
         - "PETKeptGlobal"

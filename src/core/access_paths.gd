@@ -24,9 +24,14 @@ static func control_position(control:Control) -> Vector2:
 
 
 static func yaml_node_kind() -> int:
+	## A plain value, so under reduction this is the value and YAMLParser is not needed for it.
+	return YAMLParser.NODE_DICT
+
+
+static func yaml_text() -> String:
 	## Head is already the deepest file it names, so reduction must leave this alone rather than
 	## rewrite it to itself. YAMLParser also stays a genuine use of the class.
-	return YAMLParser.NODE_DICT
+	return YAMLParser.dump({})
 
 
 static func object_script() -> GDScript:
