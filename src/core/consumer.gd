@@ -13,9 +13,9 @@ const YAMLRemote = preload("uid://leuersl04lis")
 ## Relative rather than res://, which get_rel_or_absolute_path has to normalise either way.
 const KeptGlobal = preload("../globals/fixture_kept.gd")
 
-## "#! ignore-remote" opts a path out of both copying and rewriting - it must come through the
+## "#! gdp-ignore" opts a path out of both copying and rewriting - it must come through the
 ## export byte for byte, still pointing outside the plugin.
-const UPSTREAM_LICENSE = "res://addons/_lib/util_r/LICENSE" #! ignore-remote
+const UPSTREAM_LICENSE = "res://addons/_lib/util_r/LICENSE" #! gdp-ignore
 
 ## A string spanning lines: the global class rename must not reach into it.
 const TEMPLATE = \

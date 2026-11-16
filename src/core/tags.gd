@@ -6,8 +6,8 @@ extends RefCounted
 ## Named in export_ignore/strip_cast.txt, which is the only way the file-based strip list runs.
 const PETStripped = preload("res://addons/plugin_exporter_test/src/globals/fixture_global.gd")
 
-## The built-in name every singleton module uses; a ": PE_STRIP_CAST_SCRIPT" annotation is removed
-## wherever it appears.
+## The self const every singleton module declares. Its tag sits at the end of the file: a
+## gdp-strip-cast tag covers the whole file, lines above it included.
 const PE_STRIP_CAST_SCRIPT = preload("res://addons/plugin_exporter_test/src/core/tags.gd")
 
 
@@ -20,7 +20,7 @@ static func from_config_list() -> PETStripped:
 	return null
 
 
-#! strip-cast PETLocalOnly
+#! gdp-strip-cast PETLocalOnly
 static func inline_tagged(value) -> void:
 	## The tag above adds PETLocalOnly for this file only, so the cast below is stripped even
 	## though nothing in the config mentions it.
@@ -51,3 +51,6 @@ class PETLocalOnly extends RefCounted:
 
 	class Inner:
 		pass
+
+
+#! gdp-strip-cast PE_STRIP_CAST_SCRIPT

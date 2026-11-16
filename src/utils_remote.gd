@@ -10,16 +10,16 @@ const UObject = preload("res://addons/_lib/util_r/src/object/u_object.gd")
 ## tagged three ways: the tags are keyed by target path, so the same file tagged twice collapses
 ## to a single copy and only one placement would ever be observable.
 ##
-## Plain "#! dependency" puts it in remote_dir alongside everything else.
-const YAML_VERSION = "res://addons/_lib/yaml_parser/package.cfg" #! dependency
+## Plain "#! gdp-dependency" puts it in remote_dir alongside everything else.
+const YAML_VERSION = "res://addons/_lib/yaml_parser/package.cfg" #! gdp-dependency
 
 ## "current" places the copy next to this file instead of in remote_dir.
-const LIB_VERSION = "res://addons/_lib/util_r/package.cfg" #! dependency current
+const LIB_VERSION = "res://addons/_lib/util_r/package.cfg" #! gdp-dependency current
 
 ## An explicit destination, which must be inside the plugin.
-const LAYOUT_DEFAULTS = "res://addons/gdpackage/export_ignore/test/fixtures/vendor/nested/layout.json" #! dependency res://addons/plugin_exporter_test/src/deps/layout.json
+const LAYOUT_DEFAULTS = "res://addons/gdpackage/export_ignore/test/fixtures/vendor/nested/layout.json" #! gdp-dependency res://addons/plugin_exporter_test/src/deps/layout.json
 
 ## Claims fixtures/vendor/LICENSE while the tag above claims vendor/nested/LICENSE, giving
 ## gather_licenses a nested pair to resolve. They sit outside the plugin because a license inside
 ## the exported source ships at its own path, and check_ignore hard-blocks export_ignore/.
-const VENDOR_DATA = "res://addons/gdpackage/export_ignore/test/fixtures/vendor/data.json" #! dependency
+const VENDOR_DATA = "res://addons/gdpackage/export_ignore/test/fixtures/vendor/data.json" #! gdp-dependency
