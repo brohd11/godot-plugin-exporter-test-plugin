@@ -1,6 +1,6 @@
-# Fixture config for the exporter's own coverage. One source tree, five export entries - each
+# Fixture config for the exporter's own coverage. One source tree, six export entries - each
 # pins down a setting that is mutually exclusive with the others, so the same fixtures have to
-# come out correct five different ways. Asserted by addons/gdpackage/export_ignore/test/export_fixture_test.gd.
+# come out correct six different ways. Asserted by addons/gdpackage/export_ignore/test/export_fixture_test.gd.
 #
 # Per-entry settings are written as untyped keys directly under parser_overide_settings, and the
 # empty "parse_*" blocks are deliberately absent. That is the shape that used to leak: an entry
@@ -138,3 +138,22 @@ exports:
       backport_target: 3
       replace_editor_interface: true
     remote_dir: "res://addons/plugin_exporter_test/src/remote"
+
+  # 6. External package: yaml_parser stays a hard dependency instead of being bundled. The fixture
+  # reaches it three ways (YAMLParser by name, a uid preload, a "#! dependency" path), while util_r
+  # must still be bundled. Per-export so the require merge stays out of the other variants. It also
+  # leaves out remote_dir, other_transfers, parser_overide_settings and the export_ignore exclude,
+  # which are all optional.
+  -
+    source: "res://addons/plugin_exporter_test"
+    export_name: "pet-external{{version=plugin_exporter_test}}"
+    export_folder: "addons/plugin_exporter_test"
+    external:
+      - "brohd11/godot-yaml-parser@v2.4.0"
+    exclude:
+      directories:
+        - "res://addons/plugin_exporter_test/src/excluded"
+      file_extensions:
+        - "tmp"
+      files:
+        - "res://addons/plugin_exporter_test/src/notes_excluded.md"
