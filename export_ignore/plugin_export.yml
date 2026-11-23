@@ -39,7 +39,8 @@ options:
     parse_tres: {}
 exports:
   # 1. Baseline - absolute paths, no reduction. Everything else is measured against
-  # this one, and it is the only entry carrying the other_transfers.
+  # this one, and it is the only entry carrying the other_transfers. It keeps the pre-vendor
+  # remote_dir key (src/remote) to cover the fallback; 2-4 use vendor_dir.
   -
     source: "res://addons/plugin_exporter_test"
     export_name: "plugin-exporter-test{{version=plugin_exporter_test}}"
@@ -77,7 +78,7 @@ exports:
     other_transfers: []
     parser_overide_settings:
       reduce_access_paths: true
-    remote_dir: "res://addons/plugin_exporter_test/src/remote"
+    vendor_dir: "res://addons/plugin_exporter_test/vendor"
 
   # 3. Relative paths - every rewritten reference comes out "./" or "../" instead of "res://".
   -
@@ -95,7 +96,7 @@ exports:
     other_transfers: []
     parser_overide_settings:
       use_relative_paths: true
-    remote_dir: "res://addons/plugin_exporter_test/src/remote"
+    vendor_dir: "res://addons/plugin_exporter_test/vendor"
 
   # 4. Renamed plugin. export_folder (the install path) differing from the source path is the only
   # thing that turns rename_plugin on - nothing else in the repo does, so every path it touches is
@@ -115,7 +116,7 @@ exports:
         - "res://addons/plugin_exporter_test/src/notes_excluded.md"
     other_transfers: []
     parser_overide_settings: {}
-    remote_dir: "res://addons/plugin_exporter_test/src/remote"
+    vendor_dir: "res://addons/plugin_exporter_test/vendor"
 
   # 5. External package: yaml_parser stays a hard dependency instead of being bundled. The fixture
   # reaches it three ways (YAMLParser by name, a uid preload, a "#! gdp-dependency" path), while util_r
